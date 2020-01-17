@@ -12,10 +12,15 @@ val out=Output(UInt(2.W))
 
 when(!io.Busy)
 {
-RegInit shifter= 0.U(16.W)
+RegInit shifter= (0.U(16.W))
 Mux(data===1,io.out=10.b, io.out=01.b)
 Shifter := io.out
 Shifter<<2
+}
+
+.otherwise(io.Busy)
+{
+
 }
 
 }

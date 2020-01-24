@@ -99,9 +99,6 @@ is(paritycheck){
 	io.dataout :=DontCare
 }
 
-
-		}
-	}
 }
 
 

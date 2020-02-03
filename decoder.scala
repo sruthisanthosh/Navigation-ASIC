@@ -4,8 +4,9 @@ package 1553
 import chisel3._
 import chisel3.util._
 abstract class Params {
-	val div :BigInt
+	val div : BigInt
 	val divisorBits: Int
+	val address : LongInt
 }
 
 class decoderParams extends Params{
@@ -23,6 +24,8 @@ class decoder(c: decoderParams) extends Module{
 		val paritycheck = WireInit(Bool())
 		val datavalid = Output(Bool())
 		val dataout = Output(0.U(17.W))
+		val idata = WireInit(UInt(23.W))
+		val parityerror = Output(Bool())
 	})
 	val counter = RegInit(0.U(c.divisorBits.W))
 	val pulse = WireInit(false.B)
@@ -53,54 +56,63 @@ class decoder(c: decoderParams) extends Module{
 	}
 
 	when(sampledata){
-		message := Cat(message(38,0), majority)
+		message := Cat(message(38,0), majority) 
 		msglength := msglength + 1.U
 	}
-
+ 
+ 
 	val message = RegInit(0.U(40.W))
 	val msglength = RegInit(0.U())
 
+
+
 	val (s_idle::s_command:: s_data::Nil) = Enum(3)
 	val state = RegInit(s_idle)
+
+
+val xnorinter = WireInit(0.U(17.W))
+val datainter = WireInit(0.U(17.W))
+val buserror = xnorinter.orR
+
+for(i <- 3 to 19){
+	xnorinter(i-3) := !(message(2*i) ^ message(2*i + 1))                                              
+	datainter(i-3) := message(2*i) & !message(2*i +1)
 	
+}
+when(buserror){
+	io.datavalid := False.B
+}
+otherwise{
+	io.datavalid := True.B
+}
+
 	switch(state){
 		is(s_idle){
 			when(msglength === 6.U){
 				when(message === 56.U){
 					state := s_command
-				}.elsewhen(message === 7.U){
+				}.elsewhen(message === 7.U && io.datavalid){
 					state := s_data
 				}
 			}
 		}
-		is(s_command){
-			
-
+		is(s_command){ 
+            idata = Cat(message(5,0),datainter(16,0))
+			cmdata := idata
 
 		}
-		is(s_data){
-for(i <- 3 to 19){                                                
-	when(message(2*i) && !message(2*i +1)){
-		data(i-3) := true.B
-	}.elsewhen(!message(2*i) && message(2*i +1)){
-		data(i-3) := false.B
-	}otherwise{
-		data(i-3) := DontCare
-	}
-	
-}
-
-paritycheck := data.xorR   //if 0,then data is parity wise correct
-is(paritycheck){
-	io.datavalid := True.B
-	io.dataout := data
-}.otherwise{
-	io.valid := False.B
-	io.dataout :=DontCare
-}
-
+		is(s_data){ 
+        
+    		paritycheck := data.xorR   //if 0,then data is parity wise correct
+			when(paritycheck && rtrx){
+				io.parityerror := False.B
+				io.dataout := datainter(16,1)
+			}.otherwise{
+				io.parityerror := True.B
+				io.dataout :=DontCare
+			}
+		}
+    }		
 }
 
 
-/*messagr is aregister 40 bits wide
-data is aregister 16 bits wide */

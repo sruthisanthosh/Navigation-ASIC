@@ -27,6 +27,7 @@ class decoder(c: decoderParams) extends Module{
 		val idata = WireInit(UInt(23.W))
 		val parityerror = Output(Bool())
 	})
+	
 	val counter = RegInit(0.U(c.divisorBits.W))
 	val pulse = WireInit(false.B)
 	val sampledata = WireInit(false.B)

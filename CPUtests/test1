@@ -1,0 +1,7 @@
+LUI x5,#01
+ADDI x5,#F5
+LUI x6,#07
+ADDI x6,#FF
+ADD x7,x5,x6
+STORE #51,x0,x7
+JAL x0,#00

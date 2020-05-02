@@ -5,3 +5,23 @@ ADDI x6,#FF
 ADD x7,x5,x6
 STORE #51,x0,x7
 JAL x0,#00
+
+Binary equivalent
+0x000012B7
+0x0F528293
+0x00007337
+0x0FF30313
+0x006283B3
+0x027028A3
+0x0000006F
+
+Code Explanation
+1.Load upper immediate i.e the upper 20 bits of the 32 bit register5 is set to value #01 and lowest 12 bits are zeroes.
+2.ADDI instruction adds an immediate value F5 to register 5 and stores the result in reg5.
+3.Load upper immediate i.e the upper 20 bits of the 32 bit register6 is set to value #07.
+4.ADDI instruction adds an immediate value FF to register 5 and stores the result in reg6.
+5.The values in reg5 and reg6 is added and result is stored in destination register reg7.
+6.
+
+
+

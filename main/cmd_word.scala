@@ -5,7 +5,7 @@ import chisel3.util._
 
 class command extends Module{
 	val io=IO ( new Bundle{
-    val sync =Input(UInt(3.W))
+       val sync =Input(UInt(3.W))
 	val term_addr = Input(UInt(5.W))
 	val tr = Input(Bool())
 	val sub_addr_mc = Input(UInt(5.W))

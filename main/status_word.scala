@@ -17,18 +17,20 @@ class status extends Module{
 	val parity= Input(Bool())                               
 	val mismatch = Output(Bool())
 	})
-}
+
 
 val status_word = RegInit(0.U(32.W))
-val checkparity := data.xorR                 
+val checkparity := data.xorR  
+val mismatch = RegInit(0.U(1.W))
 
-when(checkparity === parity){
+when(parity){
 	status_word := Cat(Seq(io.addr,0.U(5.W),io.msg_error,io.instr,io.ser_req,0.U(3.W),io.bcmd_rd,io.busy,io.subsys_flag,io.dy_bus_accept,io.ter_flag,io.parity))
-	mismatch := false.B
+	io.mismatch := false.B
 }
 .otherwise{
 	mismatch := true.B
 }
 
+}
 
 

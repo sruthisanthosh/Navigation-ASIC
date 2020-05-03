@@ -5,7 +5,7 @@ import chisel3.util._
 
 class status extends Module{
 	val io=IO ( new Bundle{
-        val addr =Input(UInt(3.W))
+        val sync =Input(UInt(3.W))
 	val msg_error = Input(Bool())
 	val instr = Input(Bool())
 	val ser_req = Input(Bool())
@@ -25,7 +25,7 @@ class status extends Module{
 	mismatch := ~io.parity
 
 	when(io.parity){
-		status_word := Cat(Seq(io.addr,0.U(5.W),io.msg_error,io.instr,io.ser_req,0.U(3.W),io.bcmd_rd,io.busy,io.subsys_flag,io.dy_bus_accept,io.ter_flag,io.parity))
+		status_word := Cat(Seq(io.sync,0.U(5.W),io.msg_error,io.instr,io.ser_req,0.U(3.W),io.bcmd_rd,io.busy,io.subsys_flag,io.dy_bus_accept,io.ter_flag,io.parity))
         }
 
 }

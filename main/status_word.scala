@@ -23,11 +23,11 @@ val status_word = RegInit(0.U(32.W))
 val checkparity := data.xorR                 
 
 when(checkparity === parity){
-	status_word := Cat(seq(address,0.U(5.W),msg_error,instr,ser_req,0.U(3.W),bcmd_rd,busy,subsys_flag,dy_bus_accept,ter_flag,parity))
-	mismatch := False.B
+	status_word := Cat(Seq(address,0.U(5.W),msg_error,instr,ser_req,0.U(3.W),bcmd_rd,busy,subsys_flag,dy_bus_accept,ter_flag,parity))
+	mismatch := false.B
 }
 .otherwise{
-	mismatch := True.B
+	mismatch := true.B
 }
 
 

@@ -26,7 +26,7 @@ when(checkparity === parity){
 	status_word := Cat(seq(address,0.U(5.W),msg_error,instr,ser_req,0.U(3.W),bcmd_rd,busy,subsys_flag,dy_bus_accept,ter_flag,parity))
 	mismatch := False.B
 }
-otherwise{
+.otherwise{
 	mismatch := True.B
 }
 

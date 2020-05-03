@@ -5,7 +5,7 @@ import chisel3.util._
 
 class status extends Module{
 	val io=IO ( new Bundle{
-    val addr =Input(UInt(3.W))
+        val addr =Input(UInt(3.W))
 	val msg_error = Input(Bool())
 	val instr = Input(Bool())
 	val ser_req = Input(Bool())

@@ -25,10 +25,7 @@ val mismatch = RegInit(0.U(1.W))
 
 when(parity){
 	status_word := Cat(Seq(io.addr,0.U(5.W),io.msg_error,io.instr,io.ser_req,0.U(3.W),io.bcmd_rd,io.busy,io.subsys_flag,io.dy_bus_accept,io.ter_flag,io.parity))
-        
-}
-.otherwise{
-	mismatch := true.B
+     
 }
 
 }

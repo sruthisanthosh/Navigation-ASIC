@@ -55,4 +55,8 @@ Binary equivalent
 
 
 Code Explanation
+Using LUI(load upper immediate instruction),reg1 ,reg2,reg3,reg4,reg5 are loaded with values 01,02,03,04,05 respectively.
+ADDI adds reg5 with immediate value 57 and stores in reg6.
+ANDI operation does immediate AND on reg4 and immediate value 50 and stores on reg7
+
 

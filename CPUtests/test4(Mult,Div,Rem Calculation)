@@ -1,0 +1,8 @@
+LUI x3,#F5
+LUI x4,#78
+ADDI x3,x3,#543
+ADDI x4,x4,#504
+MUL x5,x3,x4
+DIV x6,x3,x4
+REM x7,x3,x4
+JAL x0,#00

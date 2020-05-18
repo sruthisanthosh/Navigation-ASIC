@@ -13,8 +13,7 @@ class command extends Module{
 	val parity= Input(Bool())                              
 	})
 
-	val cmd_word = RegInit(0.U(20.W))
-	                
+	val cmd_word = RegInit(0.U(20.W))       
 
 	when(io.parity){
 		cmd_word := Cat(Seq(io.sync, 0.U(5.W), io.tr, io.sub_addr_mc, 0.U(5.W),parity))

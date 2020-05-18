@@ -79,7 +79,6 @@ val counter = RegInit(0.U(c.divisorBits.W))
 		io.tx_data := Cat(sync,interdata)
 		io.tx_dval := True.B
 		io.tx_busy := True.B
-
 	}
 	.otherwise{  //for all other conditions
 		io.tx_data := DontCare

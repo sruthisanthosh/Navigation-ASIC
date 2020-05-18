@@ -18,7 +18,6 @@ class status extends Module{
 	val mismatch = Output(Bool())
 	})
 
-
 	val status_word = RegInit(0.U(32.W)) 
 	val mismatch = RegInit(0.U(1.W))
 	io.mismatch := mismatch

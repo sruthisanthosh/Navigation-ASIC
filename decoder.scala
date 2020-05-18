@@ -15,7 +15,6 @@ class decoderParams extends Params{
 }
 
 
-
 class decoder(c: decoderParams) extends Module{
 	val io = IO(new Bundle{
 		val div = Input(UInt(c.divisorBits.W))

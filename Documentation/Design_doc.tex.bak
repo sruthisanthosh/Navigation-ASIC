@@ -1,0 +1,274 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{graphicx}
+\usepackage{kpfonts}
+\usepackage[export]{adjustbox}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\author{Ramdas Prasad H}
+\title{Design of a SoC for Navigation application }
+\begin{document}
+
+\chapter{Introduction}
+
+
+
+\section{Purpose and Background}
+\paragraph{\textrm{\textmd{Many real time applications where control Systems are utilized benefit from having hardware that can handle real time data. In situations where large-scale production of Application Specific Integrated Circuits (ASICs) for each and every problem situation is not feasible most conventional design requirements are met using Field Programmable Gate Arrays (FPGAs). This approach yields the benefit of the same template hardware boards to be reconfigured as per the specific application, even on the fly and give considerable flexibility to the platform while also contributing heavily to the considerable cost of the overall design. Hence for applications like Navigation systems for satellites the benefits of both approaches can be combined to create an ASIC which includes a processing core, multiple configurable logic blocks, support for standard IO interface standards and protocols and ADC/DACs, all on the same silicon. This allows considerable benefits to help tailor custom hardware, specific to the needs where the system is to deployed while allowing for the reliability and cost-effectiveness of Large scale production of ASICs in house.}}}
+\paragraph{\textrm{\textmd{RISC-V is an Open-Source, frozen, Instruction-set Architecture (ISA), initially developed at The University of California, Berkeley. The ISA is a becoming a vastly popular alternative to CISC architectures and proprietary popular RISC architectures like ARM. The applications the system will encouter warrants the use of RISCV32-IM, which is the integer operation base 32 bit variant of the RISC-V ISA, with the multiply/divide extension.The processing core should preferably be pipelined and have necessary hazard detection and mitigation schemes.}}}
+\paragraph{\textrm{\textmd{The inclusion of FPGA Blocks on the die presents unique software and hardware challenges that require adapting known standard solutions to function in the unique environment the ASIC design creates.These include adapting bus standards for ease of communication with and programming of the FPGA. Establishing optimal routing for the given FPGA architecture and automating the process of synthesizing a design on the FPGA blocks using the processing core, handling and generation of multiple clock domains internally and ability for the SoC to drive output pins  to different output voltage standards according to the application. This also brings about the need for an integrated onboard or external power management solution and multiple IO voltage domains. The project aims to create a unique ASIC that currently does not exist in the market and can find application in multiple domains. This document is orderedas follows. The Scope and Methodology adopted will be discussed in the following sections. Chapter 2 will discuss the Design overview and how the design process was formulated. Chapter 3 will elaborate on the overall Hardware and Software architecture and will illustrate an  Top-Level view of the design. Chapter 4 will be where the design implementation details and detailed architecture will be discussed. All design elements will be elaborated here. Chapter 5 will elaborate how the designed ASIC is to be handled and how the phical chip can be brought onto a printed circuit Board and the necessary configuration and required support peripherals including power and pin mapping. Chapter 6 will conclude this document and shall discuss the overall process that was implemented and the actual results of the project and the road ahead.}}}
+
+
+\section{Scope}
+\paragraph{\textrm{\textmd{The project will have four different goals to achieve based on the ideas presented in the preceeding section. Firstly, Design a usable RISC-V compute core that is flexible and light-weight. Secondly implement the Programmable FPGA cores and implement a programming scheme. and then implement the necessary peripherals. Thirdly, synthesise and test the SoC elements on an FPGA and lastly, tapeout and fabrication. All elements of the SoC will be written in chisel and exported to verilog. Verilator can be used to test the SoC at the verilog level and exported to the tapeout tools available at the IISU before final fabrication.}}}
+%\section{Methodology}
+\chapter{Design Overview}
+\section{Background Information}
+\paragraph{\textrm{\textmd{
+The RISC-V Instruction-set Architecture is highly pipelining friendly as well as being comparatively easier to implement in hardware than nore conventional RISC ISAs like MIPS. This enables the design of a fast, minimalistic, pipelined compute core that can easily work as a backbone for the additional components necessary to meet the application requirements. It follows that a flexible yet simple FPGA architecture needs to be identified keeping in mind both the ease of ease of implementation and ease of programming it by the core. The Navigation ASIC will encounter both Real-Time Data and Complex Decision making tasks. Hence the compute core and the FPGA elements have distict roles to play in the ASIC. The FPGA block can be programmed to have Logic that handles the real time data while the compute core can handle less time-constrained tasks. To take it one step further the FPGA can be programmed on the fly by the compute core, thus ensuring better flexibility for the ASIC as well as making it much more of a powerful solution, eventhouh the individual components are not by any stretch, new architectural elements.}}}
+\section{Proposed process}
+\paragraph{\textrm{\textmd{According to the resources available the preffered HDL for design has been determined to be a combination of verilog and chisel. The design will be tested on an FPGA and once validated the design can be prepared for layout and fabrication. The rest of the project will be implemented using the Cadence Software Toolchain. The design process can be summarized in the following steps:}}}
+\begin{enumerate}
+	\item Creating a behavioural model of the ASIC in verilog using Chisel.
+	\item Testing the design using a Verilog simulator like verilator.
+	\item Exporting the design to FPGA and testing the ASIC subcomponents.
+	\item Exporting the design to Cadence toolchain for onboarding and layout tasks.
+	\item Preparing ASIC for fabrication using SCL 180nm as the target and testing.
+	\item Mask generation and fabrication.
+\end{enumerate}
+\section{Timeline}
+  \paragraph{\textrm{\textmd{The proposed timeline for the project is shown in Table~\ref{table:time}}}}
+
+\begin{table}[h!t]
+\centering
+
+\begin{tabular}{|c|c|c|}
+\hline
+\rowcolor[HTML]{34CDF9} 
+Task & Start Date & End Date \\ [1.5ex] \hline 
+Compute Core design & 4/1/2020 & 24/1/2020 \\ \hline
+Design 1553 Encoder/decoder & 16/1/2020 & 30/1/2020 \\ \hline
+Perform preliminary test of core and 1553 encoder/decoder & 25/1/2020 & 10/2/2020 \\ \hline
+Designing the FPGA core & 1/2/2020 & 29/2/2020 \\ \hline
+Design of Peripherals(UART,I2C,etc) & 10/2/2020 & 29/2/2020 \\ \hline
+Preperation for Fab & 1/3/2020 & 31/3/2020 \\ \hline
+
+\end{tabular}
+\caption{Proposed Timeline}
+\label{table:time}
+\end{table}
+
+
+
+
+
+\section{Constraints}
+\paragraph{\textrm{\textmd{The proposed SoC should contain the following elements:}}}
+\begin{itemize}
+	\item RISC-V ISA processor with a five stage pipeline, hazard detection and avoidance
+	\item UART, SPI(boot and programming through this interface), I2C, MIL-STD 1553 encoder decoder.
+	\item On-board ADC and DAC interfaces. 
+	\item Core Configurable FPGA Logic Blocks with multiple clock domain routing.
+	\item Pin Drive Circuitry and Voltage level shifting.
+\end{itemize}
+
+%\section{User characteristics}
+%\subsection{User Problem Statement}
+%\subsection{User Objectives}
+\chapter{System Architecture}
+\section{Hardware Architecture}
+
+\subsection{Core Design}
+\paragraph{\textrm{\textmd{ALU with add, multiply, subtract, division, and, or, not, xor, operation support.
+Five stage pipeline: Instruction Fetch(IF), Instruction Decode(ID), Execution/address calculation (EX), Memory fetch or write(MEM), Write Back(WB).
+Hazard Detection and avoidance: Forwarding, stalling and branch prediction( assume always dropped unless destination address precedes PC,
+32 registers in register file (std),}}}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=.3]{nasic.png}
+	\caption{Navigation AISC Base Architecture Block Diagram}
+\end{figure}
+%\section{Software Architecture}
+%\paragraph{\textrm{\textmd{To be Determined}}}
+%\section{Communications Architecture}
+%\paragraph{\textrm{\textmd{To be Determined}}}
+\chapter{Detailed Design}
+\section{Compute Core Detailed Design}
+\subsection{Instruction Fetch stage}
+\paragraph{\textrm{\textmd{Th Instruction Fetch(IF) stage is tasked with the reading and writing to Instruction memory, Program Counter updtaion and handling of pipeline stalls. Each of these tasks is handled in the following ways:}}}
+\begin{enumerate}
+	\item The PC register is updated always to increment by a value of 4 (corresponding to the address spcae of 1 32-bit instruction) each clock cycle. This value is used as the fetch address for the instruction memory.The instruction is formed out of the dataOut lines in the instruction memory. The architecture expects a Memory configuration with read latency of one clock cycle.
+	\item Due to a read latency of one clock cycle the PC value is stored in anouther register PCout, from where the PC value is fed to the decode stage. Branch and stall operations account for this delay in fetch as well.
+	\item Pipeline stalls require atleast two clock cycles to load the output of the stage, hence all stalls will be a minimum of two clock cycles. during these the output instruction is an 'nop' instuction or 0x00000013.
+\end{enumerate}
+\subsection{Design of the ALU}
+\paragraph{\textrm{\textmd{As per the requirements of the Compute core as described in the previous chapters, it is clear that an effective ALU must be simple, and support maximum hardware opeartions with minimal hardware utilization. Hence each possible opeartion the ALU can perform in hardware directly through a behavioural model is given a unique identifier signified by the bits of the \textbf{ALUctl} signal except the Most significant bit and secod-most significant bit. These bits explicitly describe the suboperation on the hardware to be performed. For example  MUL, MULH, MULHSU and MULHU share the same \textbf{ALUctl[4:0]} value of 0101. The operations and their corresponding \textbf{ALUctl} values are summarized in Table~\ref{tab:alu}}}}
+\begin{table}[h!t]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\rowcolor[HTML]{34CDF9} 
+Operation & ALUctl \\ [1.5ex] \hline 
+and       & 000000 \\ \hline
+or        & 000001 \\ \hline
+xor       & 000010 \\ \hline
+lt        & 000011 \\ \hline
+ltu       & 010011 \\ \hline
+add       & 000100 \\ \hline
+sub       & 010100 \\ \hline
+mul       & 000101 \\ \hline
+mulh      & 100101 \\ \hline
+mulhu     & 110101 \\ \hline
+mulhsu    & 010101 \\ \hline
+div       & 000110 \\ \hline
+divu      & 010110 \\ \hline
+rem       & 000111 \\ \hline
+remu      & 010111 \\ \hline
+sll       & 001000 \\ \hline
+srl       & 011000 \\ \hline
+sra       & 111000 \\ \hline
+\end{tabular}
+\caption{ALU Operations with their corresponfing ALUctl line values}
+\label{tab:alu}
+\end{table}
+
+\subsection{Design of ALUControl Logic}
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\rowcolor[HTML]{34CDF9} 
+\multicolumn{1}{|l|}{\cellcolor[HTML]{34CDF9}Instr-type} & OPCode & ALUop & Funct7  & Funct3 & ALUctl & ALUOperation \\ [1ex] \hline
+U                                                              & LUI                & 0000  & XXXXXXX & XXX    & 000100 & add          \\ \hline
+U                                                              & AUIPC              & 0001  & XXXXXXX & XXX    & 000100 & add          \\ \hline
+UJ                                                             & JAL                & 0010  & XXXXXXX & XXX    & 000100 & add          \\ \hline
+I                                                              & JALR               & 0011  & XXXXXXX & XXX    & 000100 & add          \\ \hline
+Branch(S-type)                                                 & BEQ                & 0100  & XXXXXXX & 000    & 010100 & sub          \\ \hline
+Branch(S-type)                                                 & BNE                & 0100  & XXXXXXX & 001    & 010100 & sub          \\ \hline
+Branch(S-type)                                                 & BLT                & 0100  & XXXXXXX & 100    & 000011 & lt           \\ \hline
+Branch(S-type)                                                 & BGE                & 0100  & XXXXXXX & 101    & 000011 & lt           \\ \hline
+Branch(S-type)                                                 & BLTU               & 0100  & XXXXXXX & 110    & 010011 & ltu          \\ \hline
+Branch(S-type)                                                 & BGEU               & 0100  & XXXXXXX & 111    & 010011 & ltu          \\ \hline
+I                                                              & LB                 & 0101  & XXXXXXX & 000    & 000100 & add          \\ \hline
+I                                                              & LH                 & 0101  & XXXXXXX & 001    & 000100 & add          \\ \hline
+I                                                              & LW                 & 0101  & XXXXXXX & 010    & 000100 & add          \\ \hline
+S                                                              & SB                 & 1000  & XXXXXXX & 000    & 000100 & add          \\ \hline
+S                                                              & SH                 & 1000  & XXXXXXX & 001    & 000100 & add          \\ \hline
+S                                                              & SW                 & 1000  & XXXXXXX & 010    & 000100 & add          \\ \hline
+I                                                              & ADDI               & 0111  & XXXXXXX & 000    & 000100 & add          \\ \hline
+I                                                              & SLTI               & 0111  & XXXXXXX & 010    & 000011 & lt           \\ \hline
+I                                                              & SLTUI              & 0111  & XXXXXXX & 011    & 010011 & ltu          \\ \hline
+I                                                              & XORI               & 0111  & XXXXXXX & 100    & 000010 & xor          \\ \hline
+I                                                              & ORI                & 0111  & XXXXXXX & 110    & 000001 & or           \\ \hline
+I                                                              & ANDI               & 0111  & XXXXXXX & 111    & 000000 & and          \\ \hline
+I                                                              & SLLI               & 0111  & 0000000 & 001    & 001000 & sll          \\ \hline
+I                                                              & SRLI               & 0111  & 0000000 & 101    & 011000 & srl          \\ \hline
+I                                                              & SRAI               & 0111  & 0100000 & 101    & 111000 & sra          \\ \hline
+R                                                              & ADD                & 0110  & 0000000 & 000    & 000100 & add          \\ \hline
+R                                                              & SUB                & 0110  & 0100000 & 000    & 010100 & sub          \\ \hline
+R                                                              & SLL                & 0110  & 0000000 & 001    & 001000 & sll          \\ \hline
+R                                                              & SLT                & 0110  & 0000000 & 010    & 000011 & lt           \\ \hline
+R                                                              & SLTU               & 0110  & 0000000 & 011    & 010011 & ltu          \\ \hline
+R                                                              & XOR                & 0110  & 0000000 & 100    & 000010 & xor          \\ \hline
+R                                                              & SRL                & 0110  & 0000000 & 101    & 011000 & srl          \\ \hline
+R                                                              & SRA                & 0110  & 0100000 & 101    & 111000 & sra          \\ \hline
+R                                                              & OR                 & 0110  & 0000000 & 110    & 000001 & or           \\ \hline
+R                                                              & AND                & 0110  & 0000000 & 111    & 000000 & and          \\ \hline
+R                                                              & MUL                & 0110  & 0000001 & 000    & 000101 & mul          \\ \hline
+R                                                              & MULH               & 0110  & 0000001 & 001    & 100101 & mulh         \\ \hline
+R                                                              & MULHU              & 0110  & 0000001 & 010    & 110101 & mulhu        \\ \hline
+R                                                              & MULHSU             & 0110  & 0000001 & 011    & 010101 & mulhsu       \\ \hline
+R                                                              & DIV                & 0110  & 0000001 & 100    & 000110 & div          \\ \hline
+R                                                              & DIVU               & 0110  & 0000001 & 101    & 010110 & divu         \\ \hline
+R                                                              & REM                & 0110  & 0000001 & 110    & 000111 & rem          \\ \hline
+R                                                              & REMU               & 0110  & 0000001 & 111    & 010111 & remu         \\ \hline
+\end{tabular}
+\caption{Intruction decode sequence}
+\label{tab:aluctl}
+\end{table}
+\paragraph{\textrm{\textmd{The \textbf{ALUctl} values specified in Table~\ref{tab:alu} can be used in conjunction with the RISCV instruction set user level encoding to generate a truth table for a peice of logic called the ALUControl. This Logic is tasked with decode the operation the ALU has to perform based on the Operation type specified by instruction using a signal generated by the Control Logic and additional Funct7 and Funct3 bits. this decoding is summarized in Table~\ref{tab:aluctl}}}}
+\paragraph{\textrm{\textmd{Using the information in Table~\ref{tab:aluctl} the values for all insputs for which each output bit of the \textbf{ALUctl} values can be extracted and the following output equations can be derived, assuming \textbf{ALUop} is represented by \textbf{a}, \textbf{Funct7} by \textbf{f} and \textbf{Funct3} by \textbf{b} as shown by Equations~\ref{eq:aluctl0} to ~\ref{eq:aluctl5} }}}
+
+\begin{equation}
+\begin{aligned}
+ALUctl[0] =  & a_3'a_2a_1'a_0'b_2 + a_3'a_2a_1a_0b_2'b_1 + a_3'a_2a_1a_0b_2b_1b_0' +  \\
+& a_3'a_2a_1a_0'f_6'f_5'f_4'f_3'f_2'f_1'f_0'b_2'b_1 \\ 
+&+ a_3'a_2a_1a_0'f_6'f_5'f_4'f_3'f_2'f_1'f_0'b_2b_1b_0' \\
+& +a_3'a_2a_1a_0'f_6'f_5'f_4'f_3'f_2'f_1'f_0b_2'b_1' + a_3'a_2a_1a_0'f_6'f_5'f_4'f_3'f_2'f_1'f_0b_1 
+\end{aligned}
+\label{eq:aluctl0}
+\end{equation}
+
+\begin{equation}
+\begin{aligned}
+ALUctl[1] = & a_3'a_2a_1'a_0'b_2 + a_3'a_2a_1a_0b_2'b_1 + \\
+&  a_3'a_2a_1a_0b_2b_1'b_0' + a_3'a_2a_1a_0'f_6'f_5'f_4'f_3'f_2'f_1'f_0'b_2'b_1 + \\
+& a_3'a_2a_1a_0'f_6'f_5'f_4'f_3'f_2'f_1'f_0'b_2b_1'b_0' + a_3'a_2a_1a_0'f_6'f_5'f_4'f_3'f_2'f_1'f_0b_2
+\end{aligned}
+\label{eq:aluctl1}
+\end{equation}
+
+\begin{equation}
+\begin{aligned}
+ALUctl[2] = & a_3'a_2' + a_3'a_2a_1b_2'b_1' + a_3'a_2a_1'a_0b_2'b_1b_0' 
+ + a_3'a_2a_1'a_0b_2b_1' \\
+ &+ a_3 a_2'a_1'a_0'b_2'b_1' + a_3a_2'a_1'a_0'b_2'b_1b_0'  + a_3'a_2a_1a_0b_2'b_1'b_0'\\
+ & + a_3'a_2a_1a_0'f_6f_4'f_3'f_2'f_1'f_0'b_2'b_1'b_0'  + a_3'a_2a_1a_0'f_6'f_5'f_4'f_3'f_2'f_1'f_0
+\end{aligned}
+\label{eq:aluctl2}
+\end{equation}
+
+\begin{equation}
+\begin{aligned}
+ALUctl[3] = & a_3'a_2a_1f_6'f_5'f_4'f_3'f_2'f_1'f_0'b_2'b_1'b_0 + a_3'a_2a_1f_6'f_4'f_3'f_2'f_1'f_0'b_2b_1'b_0
+\end{aligned}
+\label{eq:aluctl3}
+\end{equation}
+
+\begin{equation}
+\begin{aligned}
+ALUctl[4] = & a_3'a_2a_1'a_0'b_2'b_1' + a_3'a_2a_1'a_0'b_2b_1 + 
+ a_3'a_2a_1a_0b_2b_1b_0 +\\
+& a_3'a_2a_1a_0f_6'f_4'f_3'f_2'f_1'f_0'b_2b_1'b_0 + 
+ a_3'a_2a_1a_0'f_6'f_5'f_4'f_3'f_2'f_1'f_0'b_2'b_1'b_0' +\\
+ &  a_3'a_2a_1a_0'f_6'f_5'f_4'f_3'f_2'f_1'f_0'b_2'b_1b_0 + 
+a_3'a_2a_1a_0'f_6'f_4'f_3'f_2'f_1'f_0'b_2b_1'b_0' +\\
+&  a_3'a_2a_1a_0'f_6'f_5'f_4'f_3'f_2'f_1'f_0b_2'b_1 +  a_3'a_2a_1a_0'f_6'f_5'f_4'f_3'f_2'f_1'f_0b_2b_0
+\end{aligned}
+\label{eq:aluctl4}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+ALUctl[5] =  a_3'a_2a_1a_0'f_6'f_5'f_4'f_3'f_2'f_1'f_0b_2'b_0 +  a_3'a_2a_1f_6'f_5f_4'f_3'f_2'f_1'f_0'b_2b_1'b_0
+\end{aligned}
+\label{eq:aluctl5}
+\end{equation}
+\subsection{Forwarding Unit}
+\paragraph{\textrm{\textmd{The forwarding unit is tasked with ensuring that back-toback instructions that write and read to the same memmory location and/or the same register is handled smoothly in the pipeline. It functions by routing values from subsequent pipeline stages. Under these considerations three possible forwarding paths come up that the Forwarding Unit has to support. These are:}}}
+\begin{itemize}
+\item When a previously computed output value becomes the current input argument to the ALU
+\item When the destination register of the Memmory Fetch stage is the argument of the subsequent ALU operation.
+\item When a a register who is being written to in the Write Back stage is the argument for a simultaneous ALU operation.
+\end{itemize}
+\subsection{Branch Detection}
+\paragraph{\textrm{\textmd{The branch detection Unit is tasked with Confirming that a Branch condition is valid and the branch can be taken. The Branch Predictors prediction is compared and the pipeline is stalled if the they disagree. The branch detction Unit is tasked with making sense of the condition for operations complementary to the Operations supported by the ALU. For example, the sub operation is used to identify wether two registers are equal in case of a BEQ(branch if Equal)instruction by just checking if the output of the ALU is zero, if not,  the  brach is dropped. The Logical Inverse of this operation is required for the BNE(Branch if Not Equal) instruction. This can be achieved by inverting the implications of the compare. If the ouput of the ALU is zero then the branch is dropped, else if the output is non-zero thenthe branch is taken. This can be extended to complementary Operational pairs like BLT and BGE (Branch if Less than and Branch of Greater than or Equal respectively) }}}
+
+
+%\paragraph{\textrm{\textmd{This is also a paragraph to remove}}}
+%\section{Software Detailed Design}
+%\paragraph{\textrm{\textmd{To be Determined}}}
+%\chapter{External Interface Design}
+%\section{Interface Architecture}
+%\paragraph{\textrm{\textmd{To be Determined}}}
+%\section{Interface Detailed Design}
+%\paragraph{\textrm{\textmd{To be Determined}}}
+\chapter{Conclusion}
+%\chapter{Appendix}
+
+\end{document}

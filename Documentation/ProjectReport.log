@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.7.6)  9 JUL 2020 16:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.7.6)  12 JUL 2020 18:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -218,13 +218,22 @@ Package: a4wide 1994/08/30
 (/usr/share/texlive/texmf-dist/tex/latex/ntgclass/a4.sty
 Package: a4 2004/04/15 v1.2g A4 based page layout
 ))
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip65
+\enit@outerparindent=\dimen153
+\enit@toks=\toks24
+\enit@inbox=\box49
+\enit@count@id=\count191
+\enitdp@description=\count192
+)
 (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count191
-\float@exts=\toks24
-\float@box=\box49
-\@float@everytoks=\toks25
-\@floatcapt=\box50
+\c@float@type=\count193
+\float@exts=\toks25
+\float@box=\box50
+\@float@everytoks=\toks26
+\@floatcapt=\box51
 )
 (/usr/share/texlive/texmf-dist/tex/latex/blindtext/blindtext.sty
 Package: blindtext 2012/01/06 V2.0 blindtext-Package
@@ -232,24 +241,24 @@ Package: blindtext 2012/01/06 V2.0 blindtext-Package
 (/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
-\c@blindtext=\count192
-\c@Blindtext=\count193
-\c@blind@countparstart=\count194
-\blind@countxx=\count195
-\blindtext@numBlindtext=\count196
-\blind@countyy=\count197
-\c@blindlist=\count198
-\c@blindlistlevel=\count199
-\c@blindlist@level=\count266
-\blind@listitem=\count267
-\c@blind@listcount=\count268
-\c@blind@levelcount=\count269
-\blind@mathformula=\count270
-\blind@Mathformula=\count271
-\c@blind@randomcount=\count272
-\c@blind@randommax=\count273
-\c@blind@pangramcount=\count274
-\c@blind@pangrammax=\count275
+\c@blindtext=\count194
+\c@Blindtext=\count195
+\c@blind@countparstart=\count196
+\blind@countxx=\count197
+\blindtext@numBlindtext=\count198
+\blind@countyy=\count199
+\c@blindlist=\count266
+\c@blindlistlevel=\count267
+\c@blindlist@level=\count268
+\blind@listitem=\count269
+\c@blind@listcount=\count270
+\c@blind@levelcount=\count271
+\blind@mathformula=\count272
+\blind@Mathformula=\count273
+\c@blind@randomcount=\count274
+\c@blind@randommax=\count275
+\c@blind@pangramcount=\count276
+\c@blind@pangrammax=\count277
 )
 (/usr/share/texlive/texmf-dist/tex/latex/xpatch/xpatch.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
@@ -257,25 +266,25 @@ Package: expl3 2020-02-14 L3 programming layer (loader)
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count276
-\l__pdf_internal_box=\box51
+\l__kernel_color_stack_int=\count278
+\l__pdf_internal_box=\box52
 ))
 Package: xpatch 2012/10/02 v0.3 Extending etoolbox patching commands
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 Package: xparse 2020-02-14 L3 Experimental document command parser
-\l__xparse_current_arg_int=\count277
-\g__xparse_grabber_int=\count278
-\l__xparse_m_args_int=\count279
-\l__xparse_v_nesting_int=\count280
+\l__xparse_current_arg_int=\count279
+\g__xparse_grabber_int=\count280
+\l__xparse_m_args_int=\count281
+\l__xparse_v_nesting_int=\count282
 )
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count281
+\etb@tempcnta=\count283
 ))
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 25.
+less on input line 26.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
@@ -283,39 +292,39 @@ Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
 Patched @makechapterhead
 (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titletoc.sty
 Package: titletoc 2019/10/16 v2.13 TOC entries
-\ttl@leftsep=\dimen153
+\ttl@leftsep=\dimen154
 )
 (./ProjectReport.aux)
 \openout1 = `ProjectReport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count282
-\scratchdimen=\dimen154
-\scratchbox=\box52
-\nofMPsegments=\count283
-\nofMParguments=\count284
-\everyMPshowfont=\toks26
-\MPscratchCnt=\count285
-\MPscratchDim=\dimen155
-\MPnumerator=\count286
-\makeMPintoPDFobject=\count287
-\everyMPtoPDFconversion=\toks27
+\scratchcounter=\count284
+\scratchdimen=\dimen155
+\scratchbox=\box53
+\nofMPsegments=\count285
+\nofMParguments=\count286
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count287
+\MPscratchDim=\dimen156
+\MPnumerator=\count288
+\makeMPintoPDFobject=\count289
+\everyMPtoPDFconversion=\toks28
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -328,19 +337,19 @@ e
 <CET_logo.jpeg, id=1, 602.25pt x 337.26pt>
 File: CET_logo.jpeg Graphic file (type jpg)
 <use CET_logo.jpeg>
-Package pdftex.def Info: CET_logo.jpeg  used on input line 96.
+Package pdftex.def Info: CET_logo.jpeg  used on input line 97.
 (pdftex.def)             Requested size: 240.89572pt x 134.9016pt.
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./CET_logo.jpeg>]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 118
+LaTeX Font Info:    Trying to load font information for U+msa on input line 119
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 118
+LaTeX Font Info:    Trying to load font information for U+msb on input line 119
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -348,15 +357,15 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [2]
 File: CET_logo.jpeg Graphic file (type jpg)
 <use CET_logo.jpeg>
-Package pdftex.def Info: CET_logo.jpeg  used on input line 148.
+Package pdftex.def Info: CET_logo.jpeg  used on input line 149.
 (pdftex.def)             Requested size: 240.89572pt x 134.9016pt.
 
-Overfull \hbox (28.26544pt too wide) in paragraph at lines 158--198
+Overfull \hbox (28.26544pt too wide) in paragraph at lines 159--199
 $[]$ $[]$ $[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--198
+Underfull \hbox (badness 10000) in paragraph at lines 159--199
 
  []
 
@@ -392,7 +401,7 @@ Chapter 2.
 <nasic2.png, id=57, 753.81625pt x 653.44125pt>
 File: nasic2.png Graphic file (type png)
 <use nasic2.png>
-Package pdftex.def Info: nasic2.png  used on input line 306.
+Package pdftex.def Info: nasic2.png  used on input line 307.
 (pdftex.def)             Requested size: 263.83965pt x 228.70786pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -407,12 +416,12 @@ Chapter 3.
 <ifstage.png, id=69, 650.43pt x 332.24126pt>
 File: ifstage.png Graphic file (type png)
 <use ifstage.png>
-Package pdftex.def Info: ifstage.png  used on input line 325.
+Package pdftex.def Info: ifstage.png  used on input line 326.
 (pdftex.def)             Requested size: 292.6908pt x 149.50717pt.
 <exstage.png, id=70, 1034.86626pt x 492.84125pt>
 File: exstage.png Graphic file (type png)
 <use exstage.png>
-Package pdftex.def Info: exstage.png  used on input line 334.
+Package pdftex.def Info: exstage.png  used on input line 335.
 (pdftex.def)             Requested size: 362.20862pt x 172.49701pt.
 
 
@@ -420,49 +429,51 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [8 <./ifstage.png>]
 
-LaTeX Warning: Float too large for page by 202.379pt on input line 415.
+LaTeX Warning: Float too large for page by 202.379pt on input line 416.
 
 
-LaTeX Warning: Reference `tab:aluctl' on page 9 undefined on input line 437.
+LaTeX Warning: Reference `tab:aluctl' on page 9 undefined on input line 438.
 
 [9 <./exstage.png>] [10] [11]
-<interface.png, id=90, 692.5875pt x 606.265pt>
+<interface.png, id=90, 675.52374pt x 595.22375pt>
 File: interface.png Graphic file (type png)
 <use interface.png>
-Package pdftex.def Info: interface.png  used on input line 514.
-(pdftex.def)             Requested size: 277.03009pt x 242.5017pt.
+Package pdftex.def Info: interface.png  used on input line 515.
+(pdftex.def)             Requested size: 270.20471pt x 238.08528pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [12]
-<wb.png, id=94, 392.96812pt x 348.55219pt>
+<wb.png, id=95, 514.92375pt x 430.60875pt>
 File: wb.png Graphic file (type png)
 <use wb.png>
 Package pdftex.def Info: wb.png  used on input line 530.
-(pdftex.def)             Requested size: 235.78268pt x 209.1329pt.
+(pdftex.def)             Requested size: 308.95662pt x 258.36723pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [13 <./interface.png>] [14 <./wb.png>]
-<1553.png, id=101, 656.4525pt x 303.1325pt>
+<1553.png, id=104, 656.4525pt x 303.1325pt>
 File: 1553.png Graphic file (type png)
 <use 1553.png>
-Package pdftex.def Info: 1553.png  used on input line 568.
+Package pdftex.def Info: 1553.png  used on input line 558.
 (pdftex.def)             Requested size: 262.57634pt x 121.25084pt.
- [15 <./1553.png>]
-<rt.png, id=106, 910.40125pt x 604.2575pt>
+<rt.png, id=105, 910.40125pt x 604.2575pt>
 File: rt.png Graphic file (type png)
 <use rt.png>
-Package pdftex.def Info: rt.png  used on input line 593.
+Package pdftex.def Info: rt.png  used on input line 572.
 (pdftex.def)             Requested size: 364.15404pt x 241.69872pt.
- [16 <./rt.png>]
-[17] [18]
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[15 <./1553.png>] [16 <./rt.png>] [17]
 <word.png, id=118, 883.3pt x 668.4975pt>
 File: word.png Graphic file (type png)
 <use word.png>
-Package pdftex.def Info: word.png  used on input line 664.
+Package pdftex.def Info: word.png  used on input line 621.
 (pdftex.def)             Requested size: 309.15964pt x 233.97763pt.
 
 
@@ -471,45 +482,58 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <command.png, id=119, 825.0825pt x 623.32875pt>
 File: command.png Graphic file (type png)
 <use command.png>
-Package pdftex.def Info: command.png  used on input line 672.
+Package pdftex.def Info: command.png  used on input line 629.
 (pdftex.def)             Requested size: 330.02715pt x 249.32707pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[19]
-<status.png, id=123, 804.00375pt x 817.0525pt>
+<status.png, id=120, 804.00375pt x 817.0525pt>
 File: status.png Graphic file (type png)
 <use status.png>
-Package pdftex.def Info: status.png  used on input line 680.
+Package pdftex.def Info: status.png  used on input line 637.
 (pdftex.def)             Requested size: 321.59581pt x 326.81522pt.
-
+[18]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 <data.png, id=124, 786.94pt x 200.75pt>
 File: data.png Graphic file (type png)
 <use data.png>
-Package pdftex.def Info: data.png  used on input line 688.
+Package pdftex.def Info: data.png  used on input line 645.
 (pdftex.def)             Requested size: 314.77042pt x 80.29857pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[20 <./word.png>] [21 <./command.png>] [22 <./status.png> <./data.png>]
-[23] [24]
+[19 <./word.png>]
+<qspi.png, id=129, 544.0325pt x 653.44125pt>
+File: qspi.png Graphic file (type png)
+<use qspi.png>
+Package pdftex.def Info: qspi.png  used on input line 657.
+(pdftex.def)             Requested size: 217.60915pt x 261.37187pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[20 <./command.png>] [21 <./status.png>] [22 <./data.png> <./qspi.png>]
+[23] [24] [25] [26] [27]
 Chapter 4.
-[25
+[28
 
 ]
 Chapter 5.
-[26
+[29
 
 ]
 Chapter 6.
-[27
+[30
 
 ]
 Chapter 7.
-[28
+[31
+
+]
+Chapter 8.
+[32
 
 ] (./ProjectReport.aux)
 
@@ -517,13 +541,13 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 5337 strings out of 483183
- 74969 string characters out of 5966293
- 366686 words of memory out of 5000000
- 20236 multiletter control sequences out of 15000+600000
- 547844 words of font info for 57 fonts, out of 8000000 for 9000
+ 5667 strings out of 483183
+ 80458 string characters out of 5966293
+ 383023 words of memory out of 5000000
+ 20560 multiletter control sequences out of 15000+600000
+ 548534 words of font info for 58 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 36i,9n,45p,1399b,245s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,9n,45p,2458b,245s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/sruthi/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.60
 0pk> </home/sruthi/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.
 600pk> </home/sruthi/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx248
@@ -539,11 +563,12 @@ appen/ec/ecrm1200.600pk> </home/sruthi/.texlive2019/texmf-var/fonts/pk/ljfour/j
 knappen/ec/ecbx1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on ProjectReport.pdf (37 pages, 636524 bytes).
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on ProjectReport.pdf (41 pages, 686164 bytes).
 PDF statistics:
- 600 PDF objects out of 1000 (max. 8388607)
- 146 compressed objects within 2 object streams
+ 619 PDF objects out of 1000 (max. 8388607)
+ 157 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

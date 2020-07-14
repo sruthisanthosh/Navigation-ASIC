@@ -1,6 +1,5 @@
 package 1553
 
-
 import chisel3._
 import chisel3.util._
 abstract class Params {
@@ -11,7 +10,7 @@ abstract class Params {
 
 class decoderParams extends Params{
 	div = 16
-	divisorBits = 6
+	divisorBit = 6
 }
 
 
@@ -22,9 +21,10 @@ class decoder(c: decoderParams) extends Module{
 		val rxdata = Input(Bool())
 		val paritycheck = WireInit(Bool())
 		val datavalid = Output(Bool())
-		val dataout = Output(0.U(17.W))
+		val dataout = ValidIO(0.U(17.W))
 		val idata = WireInit(UInt(23.W))
 		val parityerror = Output(Bool())
+		val csw = Output(Bool())
 	})
 	
 	val counter = RegInit(0.U(c.divisorBits.W))
@@ -33,9 +33,11 @@ class decoder(c: decoderParams) extends Module{
 	val s1 = io.rxdata    
 	val s2 = RegNext(s1) /// on each clock cycle the register is updated with the value of argument+
 	val s3 = RegNext(s2)
-	//val dataout=RegInit(0.U(16.W))
 	val data =RegInit(0.U(17.W))
 	val majority = (s1 & s3)|(s1 & s2)|(s2 & s3)
+	val csw=RegInit(false.B)
+	io.csw:=csw
+
 	when(io.rxvalid){
 		when(counter === io.div){
 			counter := 0.U
@@ -80,10 +82,10 @@ for(i <- 3 to 19){
 	
 }
 when(buserror){
-	io.datavalid := False.B
+	io.datavalid := false.B
 }
 otherwise{
-	io.datavalid := True.B
+	io.datavalid := true.B
 }
 
 	switch(state){
@@ -99,17 +101,23 @@ otherwise{
 		is(s_command){ 
             idata = Cat(message(5,0),datainter(16,0))
 			cmdata := idata
+			csw=true.B
 
 		}
 		is(s_data){ 
         
     		paritycheck := data.xorR   //if 0,then data is parity wise correct
 			when(paritycheck && rtrx){
-				io.parityerror := False.B
-				io.dataout := datainter(16,1)
+				io.parityerror := false.B
+				io.dataout.bits := datainter(16,0)
+				io.dataout.valid:=true.B
+				csw=false.B
+
 			}.otherwise{
-				io.parityerror := True.B
-				io.dataout :=DontCare
+				io.parityerror := true.B
+				io.dataout.bits := datainter(16,0)
+				io.dataout.valid:=true.B
+				csw=false.B
 			}
 		}
     }		
